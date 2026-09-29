@@ -173,7 +173,7 @@ INSERT INTO master_templates (scope_type, name, description, tool) VALUES
 ```bash
 # 1. Clone repository directly into your local web root
 cd C:/xampp/htdocs/
-git clone https://github.com/your-username/vapt-tracker.git
+git clone https://github.com/abhijeet11yadav/vapt-tracker.git
 
 # 2. Boot Apache & MySQL via XAMPP Control Panel
 # 3. Create 'vapt_tracker_db' and execute the SQL payload above
