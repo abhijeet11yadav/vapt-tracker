@@ -22,6 +22,7 @@
 ---
 
 </div>
+<img width="1357" height="682" alt="3" src="https://github.com/user-attachments/assets/84f93df0-6213-4ff2-8532-6dcb810de859" />
 
 ## 💀 Overview
 
