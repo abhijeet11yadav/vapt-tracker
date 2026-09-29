@@ -1,0 +1,379 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #0b0f19;
+    color: #e2e8f0;
+    overflow: hidden;
+}
+
+/* =========================================
+   Sidebar & Toggle Animation
+========================================= */
+.sidebar {
+    width: 290px;
+    background-color: #111827;
+    border-right: 1px solid #1f2937;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    /* Allow button to protrude out cleanly */
+    overflow: visible;
+    z-index: 50;
+}
+
+/* Inner wrapper */
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    height: 100%;
+    width: 290px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* Collapsed State */
+.sidebar.collapsed {
+    width: 0 !important;
+    border-right: 1px solid transparent;
+}
+
+.sidebar.collapsed .sidebar-content {
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Toggle Arrow Button */
+.sidebar-toggle {
+    position: absolute;
+    top: 18px;
+    right: -14px;
+    width: 28px;
+    height: 28px;
+    background-color: #0284c7;
+    color: #ffffff;
+    border: 2px solid #0b0f19;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 11px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s, transform 0.2s;
+    outline: none;
+}
+
+.sidebar-toggle:hover {
+    background-color: #0369a1;
+    transform: scale(1.08);
+}
+
+/* =========================================
+   Sidebar UI Elements
+========================================= */
+.sidebar h2 {
+    font-size: 1.15rem;
+    color: #38bdf8;
+    margin-bottom: 12px;
+}
+
+.project-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.project-form input {
+    flex: 1;
+    padding: 8px 10px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #fff;
+    border-radius: 4px;
+    outline: none;
+}
+
+.project-form button {
+    padding: 8px 14px;
+    background: #0284c7;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.project-form button:hover {
+    background: #0369a1;
+}
+
+.project-list {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+}
+
+.project-item {
+    padding: 9px 12px;
+    margin-bottom: 6px;
+    background: #1e293b;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.92rem;
+}
+
+.project-item:hover {
+    background: #253347;
+}
+
+.project-item.active {
+    background: #0284c7;
+    font-weight: bold;
+    color: #fff;
+}
+
+.template-box {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #1f2937;
+}
+
+/* =========================================
+   Main Workspace Content
+========================================= */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    overflow-y: auto;
+    min-width: 0;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.topbar h1 {
+    font-size: 1.6rem;
+    color: #f8fafc;
+}
+
+.btn-sync {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-sync:hover {
+    background: #2563eb;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+.scope-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    background: #273549;
+    color: #f1f5f9;
+}
+
+.tab-btn.active {
+    background: #38bdf8;
+    color: #0f172a;
+    border-color: #38bdf8;
+}
+
+/* =========================================
+   Checklist Data Table
+========================================= */
+.table-container {
+    flex: 1;
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 6px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+}
+
+th,
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1f2937;
+    font-size: 0.9rem;
+    vertical-align: top;
+}
+
+th {
+    background: #1e293b;
+    color: #cbd5e1;
+    text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    background: #0b0f19;
+    border: 1px solid #334155;
+    color: #f1f5f9;
+    border-radius: 4px;
+    padding: 7px;
+    font-size: 0.88rem;
+    outline: none;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #38bdf8;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 48px;
+}
+
+.save-btn {
+    background: #16a34a;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.save-btn:hover {
+    background: #15803d;
+}
+
+.empty-state {
+    text-align: center;
+    color: #64748b;
+    padding: 40px !important;
+}
+
+
+/* =========================================
+   Progress & Status Dynamic Colors
+========================================= */
+
+/* Progress States */
+.color-not-started {
+    background-color: #1e3a8a !important;
+    /* Blue */
+    color: #bfdbfe !important;
+    border-color: #3b82f6 !important;
+    font-weight: 600;
+}
+
+.color-in-progress {
+    background-color: #854d0e !important;
+    /* Yellow / Amber */
+    color: #fef08a !important;
+    border-color: #eab308 !important;
+    font-weight: 600;
+}
+
+.color-completed {
+    background-color: #14532d !important;
+    /* Green */
+    color: #bbf7d0 !important;
+    border-color: #22c55e !important;
+    font-weight: 600;
+}
+
+/* Status States */
+.color-pending {
+    background-color: #1e3a8a !important;
+    /* Blue */
+    color: #bfdbfe !important;
+    border-color: #3b82f6 !important;
+    font-weight: 600;
+}
+
+.color-yes {
+    background-color: #7f1d1d !important;
+    /* Red (Vulnerability confirmed) */
+    color: #fecaca !important;
+    border-color: #ef4444 !important;
+    font-weight: 600;
+}
+
+.color-no {
+    background-color: #14532d !important;
+    /* Green (Safe / No vuln) */
+    color: #bbf7d0 !important;
+    border-color: #22c55e !important;
+    font-weight: 600;
+}
+
+.color-recheck {
+    background-color: #854d0e !important;
+    /* Yellow / Amber */
+    color: #fef08a !important;
+    border-color: #eab308 !important;
+    font-weight: 600;
+}
